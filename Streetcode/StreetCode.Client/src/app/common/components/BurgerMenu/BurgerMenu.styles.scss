@@ -1,0 +1,23 @@
+@use "@sass/utils.functions" as f;
+@use "@sass/variables/variables.colors" as c;
+@use "@sass/mixins/utils.mixins" as mut;
+
+.burgerMenuContainer {
+  @include mut.sized(36px, 100%);
+  @include mut.flexed($direction: column, $justify-content: center, $gap: 6px);
+  margin-right: f.pxToRem(24px);
+
+  > * {
+    @include mut.sized(100%, 5px);
+    @include mut.full-rounded(12px);
+    background-color: c.$normal-gray-color;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    > * {
+      background-color: c.$dark-gray-color;
+    }
+  }
+}

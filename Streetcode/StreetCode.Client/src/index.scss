@@ -1,0 +1,40 @@
+@use '@assets/sass/variables/_variables.fonts.scss' as ft;
+@use '@assets/sass/mixins/_utils.mixins.scss' as ut;
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: ft.$body-tag-font;
+  @include ut.antialiased();
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: ft.$code-tag-font;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+ul, ol {
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}

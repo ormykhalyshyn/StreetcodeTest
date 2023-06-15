@@ -1,0 +1,142 @@
+@use "@sass/_utils.functions.scss" as f;
+@use "@sass/variables/_variables.colors.scss" as c;
+@use "@sass/mixins/_utils.mixins.scss" as mut;
+@use "@sass/mixins/_vendor.mixins.scss" as vnd;
+
+.navBarContainer {
+  @include mut.sized(100%, 82px);
+  max-width: f.pxToRem(1902px);
+
+  @include mut.flexed($justify-content: space-between, $align-items: center);
+  padding: f.pxToRem(21px) f.pxToRem(32px);
+
+  position: fixed;
+  z-index: 2;
+
+  background-color: white;
+  border-bottom: 1px dashed c.$dark-gray-color;
+
+  svg {
+    margin-right: f.pxToRem(34px);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .ant-input,
+  .ant-input-affix-wrapper,
+  .langSelector {
+    background-color: c.$accented-gray-color;
+  }
+
+  .ant-input-prefix {
+    height: 100%;
+    margin: 0;
+  }
+
+  .ant-input-affix-wrapper {
+    position: relative;
+    @include mut.sized(1215px, 39px);
+
+    @include mut.full-rounded(12px);
+    margin-right: f.pxToRem(10px);
+
+    svg {
+      color: c.$selected-arrow-color;
+      margin-right: f.pxToRem(11px);
+    }
+  }
+
+  &.dim {
+    background-color: rgba(0, 0, 0, .01);
+    // z-index: -10000;
+  }
+
+  @media screen and (max-width: 1850px) {
+    .ant-input-affix-wrapper {
+      @include mut.sized(815px, 39px);
+    }
+  }
+}
+
+.leftPartContainer,
+.rightPartContainer,
+.langSelector {
+  @include mut.flexed($justify-content: flex-start, $align-items: center);
+}
+
+.langSelector {
+  @include mut.sized(55px, 39px);
+  @include mut.full-rounded(12px);
+  padding: f.pxToRem(10px);
+
+  span {
+    @include mut.with-font($font-weight: 300, $font-size: 18px);
+    color: c.$lighter-black-color;
+
+    &:after {
+      content: "";
+      @include mut.sized(5px, 5px);
+      @include mut.positioned-as(absolute, $top: 42%, $right: 16%);
+      background-color: c.$accented-red-color;
+    }
+  }
+}
+
+.rightSectionContainer {
+  @include mut.flexed($align-items: center);
+  margin-left: f.pxToRem(120px);
+
+  .loginBtn {
+    @include mut.sized(142px, 39px);
+    @include mut.full-rounded(12px);
+    background-color: c.$accented-red-color;
+
+    > * {
+      @include mut.with-font($font-weight: 500, $font-size: 18px);
+    }
+
+    &:hover {
+      background-color: c.$dark-red-color;
+    }
+  }
+
+  svg {
+    @include mut.sized(30px, 30px);
+    @include mut.rem-margined($right: 8px, $top: 5px);
+    filter: invert(51%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(97%) contrast(93%);
+
+    &:hover {
+      filter: invert(27%) sepia(26%) saturate(0%) hue-rotate(201deg) brightness(96%) contrast(86%);
+    }
+  }
+}
+
+.hiddenNavBar {
+  background: transparent none;
+  border-bottom: none !important;
+
+  .ant-input-affix-wrapper,
+  .langSelector,
+  .loginBtn {
+    @include mut.hidden();
+  }
+
+  .burgerMenuContainer {
+    margin: 0;
+  }
+}
+
+.hiddenHeaderInput {
+  @include mut.sized(1200px, 39px);
+  @include mut.positioned-as(absolute, $left: 17%);
+  @include mut.full-rounded(12px);
+
+  @include vnd.vendored(transition, 'all 1s ease');
+  transform: translateY(f.pxToRem(-200px));
+
+  &.active {
+    transform: translateY(0);
+  }
+}

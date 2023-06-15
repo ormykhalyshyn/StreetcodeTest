@@ -1,0 +1,8 @@
+@use "@assets/sass/mixins/_utils.mixins.scss" as mut;
+@use "@assets/sass/_utils.functions.scss" as f;
+
+.videoComponent {
+    margin-bottom: f.pxToRem(50px);
+    @include mut.full-rounded(50px);
+    overflow: hidden;
+}
